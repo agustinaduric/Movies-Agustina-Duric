@@ -8,11 +8,11 @@
     <link rel="shortcut icon" href="./assets/flavi.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/stylesheet.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Movies</title>
+    <title>Favorites Film</title>
 </head>
 
 <body>
-    <div class="w-full cinzel_class">
+    <div>
         <header>
             <div
                 class="bg-[#0D0A0B] border-b-2 border-[#400D0D] fixed top-0 left-0 right-0 z-50 flex flex-row text-sm justify-between items-center h-18 font-mono lg:text-lg md:text-md">
@@ -24,35 +24,19 @@
                 <nav class="flex flex-row items-center justify-end space-x-4 mr-2 ml-4">
                     <a href="./index.html"
                         class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] font-bold border border-zinc-100">Home</a>
-                    <a href="#"
+                    <a href="./movies.html"
                         class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] border border-zinc-100">Movies</a>
-                    <a href="./favs.html"
+                    <a href="#"
                         class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] border border-zinc-100">Favs</a>
                 </nav>
             </div>
-            <div class="w-full bg-[#0D0A0B] mt-20 pb-4">
+            <div class="w-full bg-[#0D0A0B] mt-20">
                 <img src="./assets/newBanner.png" alt="banner"
-                    class="mx-auto w-full h-80 p-10 md:object-cover object-fill lg:w-full lg:h-96">
+                    class="mx-auto w-full h-80 px-10 pt-10 md:object-cover lg:w-full lg:h-96">
             </div>
         </header>
-        <main class="bg-[#0D0A0B] px-10">
-            <div class="flex flex-col mb-0.5">
-                <search class="flex gap-5 justify-center w-full gap-8">
-                    <div>
-                        <select class="w-[30] rounded h-6" id="filter">
-                            <option selected disabled value="first">Select a genre</option>
-                            <option id="first_op" value="first">All</option>
-                        </select>
-                    </div>
-                    <div class="w-3/4 relative">
-                        <input type="text" class="rounded w-full h-6 ps-2" id="input">
-                        <img src="./assets/search.png" alt="search" class="h-4 absolute right-1 top-1 mr-1">
-                    </div>
-                </search>
-            </div>
-            <p class="text-[#BFBFBF] pb-4 flex justify-center my-6 lg:text-lg md:text-md italic font-sans">Embark on a
-                cinematic journey that begins with a single search...</p>
-            <hr class="border border-[#400D0D]">
+        <main class="flex-1 bg-[#0D0A0B] px-10 text-[#BFBFBF]">
+            <h2 class="pt-10 text-2xl semibold font-sans flex justify-center italic">Your favorites film</h2>
         </main>
         <footer>
             <div
@@ -61,7 +45,7 @@
             </div>
         </footer>
     </div>
-    <script type="module" src="./scripts/movies.js"></script>
 </body>
+<script type="module" src="./scripts/favs.js"></script>
 
 </html>

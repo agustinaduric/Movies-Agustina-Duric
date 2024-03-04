@@ -1,12 +1,16 @@
 export function creatingCard(list){
-    return `<div class="flex flex-col mb-0.5">
+    const imageUrl = `https://moviestack.onrender.com/static/${list.image}`;
+    return `<div class="flex flex-col mb-0.5" id="detectingFav">
     <article class="p-4 mb-4 text-[#BFBFBF] flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 ">
-        <img src="${list.image}" alt="${list.image}" class="mx-auto md:w-48 md:h-48 lg:w-auto lg:ml-0 lg:object-cover object-contain">
+        <img src="${imageUrl}" alt="${list.image}" class="mx-auto md:w-48 md:h-48 lg:w-auto lg:ml-0 lg:object-cover object-contain">
         <div class="flex flex-col lg:ml-0 lg:text-lg md:text-md md:self-center">
             <h2 class="font-bold text-left">${list.title}</h2>
             <p class="italic text-justify pb-2">${list.tagline}</p>  
             <p class="text-justify">${list.overview}</p> 
             </div>
+            <label class="pointer inline-block relative">
+            <input type="checkbox" data-idCheckbox="${list.id}"></input>
+            </label>
             <a href="./details.html?id=${list.id}" class="underline text-sm md:text-md lg:text-lg">Details</a>
         </article>
         <hr class="border border-[#400D0D]">
@@ -31,11 +35,12 @@ export function filteringMoviesByGenre(moviesarray,moviegenre){
     return filteredMoviesByGender;
 }
 export function creatingDetailCard(list){
+    const imageUrl = `https://moviestack.onrender.com/static/${list.image}`;
     return `
     <div class="flex flex-col md:flex-row mt-4">
     <div class="flex flex-col md:flex-row w-full lg:ml-36">
         <div class="mb-4 md:mb-0">
-            <img src="${list.image}" alt="${list.title}" class="pb-6 mx-auto md:w-48 md:h-48 lg:w-auto lg:object-cover object-contain">
+            <img src="${imageUrl}" alt="${list.title}" class="pb-6 mx-auto md:w-48 md:h-48 lg:w-auto lg:object-cover object-contain">
             <table class="border-collapse border border-gray-200 mx-auto mt-8">
                 <tr>
                     <th class="border border-gray-200 text-left p-2">Original language</th>
@@ -94,4 +99,26 @@ export function creatingDetailCard(list){
         </table>
     </div>
 </div>`;
+}
+export function creatingCardFav(list){
+    const imageUrl = `https://moviestack.onrender.com/static/${list.image}`;
+    return `<div class="flex flex-col mb-0.5" id="detectingFav">
+    <article class="p-4 mb-4 text-[#BFBFBF] flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 ">
+        <img src="${imageUrl}" alt="${list.image}" class="mx-auto md:w-48 md:h-48 lg:w-auto lg:ml-0 lg:object-cover object-contain">
+        <div class="flex flex-col lg:ml-0 lg:text-lg md:text-md md:self-center">
+            <h2 class="font-bold text-left">${list.title}</h2>
+            <p class="italic text-justify pb-2">${list.tagline}</p>  
+            <p class="text-justify">${list.overview}</p> 
+            </div>
+            <a href="./details.html?id=${list.id}" class="underline text-sm md:text-md lg:text-lg">Details</a>
+        </article>
+        <hr class="border border-[#400D0D]">
+    <div>`;
+}
+export function printingCardsFavs(list,element){
+    let template =" "
+    for (const movie of list) {
+        template += creatingCardFav(movie);
+    }
+    element.innerHTML=template;
 }
