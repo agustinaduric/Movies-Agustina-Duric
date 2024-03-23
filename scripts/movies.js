@@ -1,26 +1,84 @@
-const main=document.querySelector("main");
-let newDiv=document.createElement('div');
-main.appendChild(newDiv);
-newDiv.id="container";
-newDiv.classList.add("flex")
-function creatingCard(list){
-    return `<div class="flex flex-col mb-0.5">
-    <article class="p-4 mb-4 text-[#F2F2F2] flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 ">
-        <img src="${list.image}" alt="${list.image}" class="w-32 h-32 mx-auto md:w-48 md:h-48 lg:w-auto lg:ml-0 lg:object-cover object-contain">
-        <div class="flex flex-col lg:ml-0 lg:text-lg md:text-md md:self-center">
-            <h2 class="font-bold text-left">${list.title}</h2>
-            <p class="italic text-justify pb-2">${list.tagline}</p>  
-            <p class="text-justify">${list.overview}</p>  
-        </div>
-        </article>
-        <hr class="border border-[#C6C4F2]">
-    <div>`;
-}
-function printingCards(list){
-    let template = "";
-    for (const movie of list) {
-        template += creatingCard(movie);
+import{printingCards,filteringMoviesByTitle,creatingOptions,filteringMoviesByGenre} from "./module/functions.js"
+let movies=[];
+let main=null;
+let newDiv=null;
+let input=null;
+let filter=null;
+let genres=null;
+let sGenres=null;
+let moviesGenresArray=null;
+let divFav=null;
+const url="https://moviestack.onrender.com/api/movies";
+const init = {
+    method: "GET",
+    headers: {
+        "x-api-key" : "0ff70d54-dc0b-4262-9c3d-776cb0f34dbd"
     }
-    newDiv.innerHTML=template;
 }
-printingCards(movies)
+fetch(url, init)
+    .then(response => response.json())
+    .then(dataResponse => {
+        movies = dataResponse.movies;
+        main = document.querySelector("main");
+        newDiv = document.createElement('div');
+        main.appendChild(newDiv);
+        newDiv.id = "container";
+        newDiv.classList.add("flex");
+        printingCards(movies, newDiv);
+        input=document.getElementById(`input`);
+        filter=document.getElementById(`filter`);
+        genres=movies.map(movie => movie.genres).flat();
+        sGenres=new Set(genres);
+        moviesGenresArray=Array.from(sGenres);
+        moviesGenresArray.sort();
+        let fReduce=(template, genre)=> template + creatingOptions(genre);
+        filter.innerHTML+=moviesGenresArray.reduce(fReduce,"");
+        input.addEventListener(`input`, ()=>{
+            let titleFilter= filteringMoviesByTitle(movies,input.value); 
+            if(filter.value=="first"){
+                printingCards(titleFilter,newDiv);
+            }
+            else{
+                const genderFilter=filteringMoviesByGenre(titleFilter,filter.value);
+                printingCards(genderFilter,newDiv);
+            }
+        })
+        filter.addEventListener('change', ()=> {
+            let titleFilter= filteringMoviesByTitle(movies,input.value);
+            if(filter.value=="first"){
+                printingCards(titleFilter,newDiv);
+            }
+            else{
+                const genderFilter=filteringMoviesByGenre(titleFilter,filter.value);
+                printingCards(genderFilter,newDiv);
+            }
+        });
+        divFav=document.getElementById("detectingFav");
+        movies.forEach(movie => {
+            movie.checked = false;
+        });
+        let toFavs=JSON.parse(localStorage.getItem('moviesFavs'))||[];
+        let miStorage=window.localStorage;
+        toFavs.forEach(favMovie => {
+            const movieIndex = movies.findIndex(movie => movie.id === favMovie.id);
+            if (movieIndex !== -1) {
+                movies[movieIndex].checked = true;
+                const checkbox = document.querySelector(`[data-idcheckbox="${favMovie.id}"]`);
+                checkbox.checked = true;
+            }
+        });
+        divFav.addEventListener(`input`, (a)=>{
+            let updateFavs = movies.find(movie => movie.id == a.target.dataset.idcheckbox);
+            if (a.target.checked) {
+                toFavs.push(updateFavs);
+                updateFavs.checked = true;
+            } else {
+                toFavs = toFavs.filter(movie => movie.id != a.target.dataset.idcheckbox);
+                if(updateFavs) {
+                    updateFavs.checked = false; 
+                }
+            }
+            localStorage.setItem('moviesFavs', JSON.stringify(toFavs));
+        })
+    })
+    .catch(err => console.log(err));

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="MovieStack is a platform for sharing your taste in film. Rate and review films.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/flavi.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/stylesheet.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Details</title>
+</head>
+
+<body>
+    <div class="w-full cinzel_class">
+        <header>
+            <div
+                class="bg-[#0D0A0B] border-b-2 border-[#400D0D] fixed top-0 left-0 right-0 z-50 flex flex-row text-sm justify-between items-center h-18 font-mono lg:text-lg md:text-md">
+                <div class="flex items-center p-4 h-20">
+                    <img src="./assets/iso.png" alt="iso" class="h-6 w-6 md:h-8 md:w-8 lg:w-10 lg:h-10">
+                    <a href="./index.html"
+                        class="uppercase text-[#BFBFBF] font-bold text-2xl md:text-3xl lg:text-4xl font-sans ml-2">MovieStack</a>
+                </div>
+                <nav class="flex flex-row items-center justify-end space-x-4 mr-2 ml-4">
+                    <a href="./index.html"
+                        class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] font-bold border border-zinc-100">Home</a>
+                    <a href="./movies.html"
+                        class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] border border-zinc-100">Movies</a>
+                    <a href="./favs.html"
+                        class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] border border-zinc-100">Favs</a>
+                </nav>
+            </div>
+        </header>
+        <main class="flex-1 bg-[#0D0A0B] px-10 text-[#BFBFBF] mt-20 pb-4">
+            <h2 class="pt-10 text-xl bold uppercase">Details</h2>
+            <div id="divDetails">
+
+            </div>
+        </main>
+        <footer>
+            <div
+                class="bg-[#0D0A0B] justify-center items-center text-[#BFBFBF] text-sm md:text-base border-t-2 border-[#400D0D] flex colum h-16 lg:text-lg md:text-md">
+                <p>MindHub - Agustina Duric - B2B050</p>
+            </div>
+        </footer>
+    </div>
+</body>
+<script type="module" src="./scripts/details.js"></script>
+
+</html>

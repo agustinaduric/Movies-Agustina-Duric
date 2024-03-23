@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="MovieStack is a platform for sharing your taste in film. Rate and review films.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/Moviestack_favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/flavi.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/stylesheet.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Movies</title>
 </head>
+
 <body>
-    <div class="w-full">
+    <div class="w-full cinzel_class">
         <header>
-            <div class="bg-neutral-700 border-b-2 border-[#9F88F2] flex flex-col md:flex-row justify-between items-center h-18 font-mono lg:text-lg md:text-md">
-                <div class="flex items-center p-4">
-                    <img src="./assets/Moviestack_isotipo.png" alt="iso" class="h-16 w-16">
-                    <h1 class="uppercase text-[#F2F2F2] font-bold text-2xl font-sans ml-4">MovieStack</h1>
+            <div
+                class="bg-[#0D0A0B] border-b-2 border-[#400D0D] fixed top-0 left-0 right-0 z-50 flex flex-row text-sm justify-between items-center h-18 font-mono lg:text-lg md:text-md">
+                <div class="flex items-center p-4 h-20">
+                    <img src="./assets/iso.png" alt="iso" class="h-1/2 w-1/2 md:h-8 md:w-8 lg:w-10 lg:h-10">
+                    <a href="./index.html"
+                        class="uppercase text-[#BFBFBF] font-bold text-2xl md:text-3xl lg:text-4xl font-sans ml-2">MovieStack</a>
                 </div>
-                <nav class="flex flex-col md:flex-row items-center justify-end p-2">
-                    <a href="./index.html" class="block py-2 px-4 uppercase hover:bg-neutral-800 text-[#F2F2F2] md:border md:border-zinc-100 md:mr-6 md:no-underline">Home</a>
-                    <a href="#" class=" font-bold block py-2 px-4 uppercase hover:bg-neutral-800 underline text-[#F2F2F2] md:border md:border-zinc-100 md:mr-6 md:no-underline">Movies</a>
-                    <a href="#" class="block py-2 px-4 uppercase hover:bg-neutral-800 text-[#F2F2F2] md:border md:border-zinc-100 md:no-underline">Fav</a>
+                <nav class="flex flex-row items-center justify-end space-x-4 mr-2 ml-4">
+                    <a href="./index.html"
+                        class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] font-bold border border-zinc-100">Home</a>
+                    <a href="#"
+                        class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] border border-zinc-100">Movies</a>
+                    <a href="./favs.html"
+                        class="block p-1 md:p-2 lg:px-3 lg:py-1 uppercase hover:bg-[#73161E] text-[#BFBFBF] border border-zinc-100">Favs</a>
                 </nav>
             </div>
-            <div class="w-full bg-neutral-800 pb-4">
-                <img src="./assets/Banner.png" alt="banner" class="mx-auto w-full h-80 p-10 md:object-cover object-fill lg:w-full lg:h-96">
+            <div class="w-full bg-[#0D0A0B] mt-20 pb-4">
+                <img src="./assets/newBanner.png" alt="banner"
+                    class="mx-auto w-full h-80 p-10 md:object-cover object-fill lg:w-full lg:h-96">
             </div>
         </header>
-    <main  class="bg-neutral-800  px-10">
-    </main>
-    <footer>
-        <div class="bg-neutral-700 justify-center items-center text-[#F2F2F2] text-sm md:text-base border-t-2 border-[#9F88F2] flex colum h-16 lg:text-lg md:text-md">
-            <p>MindHub - Agustina Duric - B2B050</p>
-        </div>
-    </footer>
-</div>
-<script src="./scripts/data.js"></script>
-<script src="./scripts/movies.js"></script>
+        <main class="bg-[#0D0A0B] px-10">
+            <div class="flex flex-col mb-0.5">
+                <search class="flex gap-5 justify-center w-full gap-8">
+                    <div>
+                        <select class="w-[30] rounded h-6" id="filter">
+                            <option selected disabled value="first">Select a genre</option>
+                            <option id="first_op" value="first">All</option>
+                        </select>
+                    </div>
+                    <div class="w-3/4 relative">
+                        <input type="text" class="rounded w-full h-6 ps-2" id="input">
+                        <img src="./assets/search.png" alt="search" class="h-4 absolute right-1 top-1 mr-1">
+                    </div>
+                </search>
+            </div>
+            <p class="text-[#BFBFBF] pb-4 flex justify-center my-6 lg:text-lg md:text-md italic font-sans">Embark on a
+                cinematic journey that begins with a single search...</p>
+            <hr class="border border-[#400D0D]">
+        </main>
+        <footer>
+            <div
+                class="bg-[#0D0A0B] justify-center items-center text-[#BFBFBF] text-sm md:text-base border-t-2 border-[#400D0D] flex colum h-16 lg:text-lg md:text-md">
+                <p>MindHub - Agustina Duric - B2B050</p>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="./scripts/movies.js"></script>
 </body>
+
 </html>
